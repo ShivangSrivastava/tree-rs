@@ -34,7 +34,7 @@ This project provides a command-line tool to print the structure of a directory 
     sudo mv target/release/tree /usr/bin
     ```
 ### One-Step Installation
-    ```bash
+    ```
     curl https://raw.githubusercontent.com/ShivangSrivastava/tree-rs/refs/heads/main/install.sh | sh
     ```
 ## Usage
