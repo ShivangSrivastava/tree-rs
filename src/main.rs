@@ -2,6 +2,13 @@ use std::{borrow::Cow, env, fs, path::Path, process::exit};
 
 use colorized::{Color, Colors};
 
+/// Sorts the entries of a given directory into directories and files.
+///
+/// # Parameters
+/// - `path`: A reference to a `Path` representing the directory whose entries will be sorted.
+///
+/// # Returns
+/// A `Vec<fs::DirEntry>` containing the sorted directory entries. Directories will appear before files in the vector.
 fn sort_entities(path: &Path) -> Vec<fs::DirEntry> {
     let mut dirs = vec![];
     let mut files = vec![];
@@ -18,6 +25,12 @@ fn sort_entities(path: &Path) -> Vec<fs::DirEntry> {
     dirs.into_iter().chain(files.into_iter()).collect()
 }
 
+/// Recursively prints the directory structure in a tree format.
+///
+/// # Parameters
+/// - `path`: A reference to a `Path` representing the directory to be printed.
+/// - `prefix`: A string used for formatting the tree structure (for indentation).
+/// - `exclude`: A reference to a vector of `Cow<'_, str>` containing the names of directories to exclude from the tree traversal.
 fn print_tree(path: &Path, prefix: &str, exclude: &Vec<Cow<'_, str>>) {
     let entries = sort_entities(path);
 
@@ -47,23 +60,6 @@ fn print_tree(path: &Path, prefix: &str, exclude: &Vec<Cow<'_, str>>) {
         };
         println!("{}{} {}", prefix, connector, formatted_name,);
 
-        // if file_name.starts_with(".") {
-        //     println!(
-        //         "{}{} {}",
-        //         prefix,
-        //         connector,
-        //         file_name.to_string().color(Colors::BrightBlackFg)
-        //     );
-        // } else if entry.path().is_dir() {
-        //     println!(
-        //         "{}{} {}/",
-        //         prefix,
-        //         connector,
-        //         file_name.to_string().color(Colors::BlueFg)
-        //     );
-        // } else {
-        //     println!("{}{} {}", prefix, connector, file_name);
-        // }
         if entry.path().is_dir() {
             let new_prefix = if is_last {
                 format!("{}    ", prefix)
@@ -77,6 +73,8 @@ fn print_tree(path: &Path, prefix: &str, exclude: &Vec<Cow<'_, str>>) {
     }
 }
 
+/// The entry point of the program that prints the directory tree of the current working directory.
+///
 fn main() {
     let path = Path::new(".");
     let exclude: Vec<Cow<'_, str>> = vec!["target", ".git", ".venv", "node_modules", "build"]
