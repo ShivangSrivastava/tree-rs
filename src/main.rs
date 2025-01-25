@@ -74,7 +74,6 @@ fn print_tree(path: &Path, prefix: &str, exclude: &Vec<Cow<'_, str>>) {
 }
 
 /// The entry point of the program that prints the directory tree of the current working directory.
-///
 fn main() {
     let path = Path::new(".");
     let exclude: Vec<Cow<'_, str>> = vec!["target", ".git", ".venv", "node_modules", "build"]
