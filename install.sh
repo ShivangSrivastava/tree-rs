@@ -13,8 +13,8 @@ cd tree-rs
 echo "Building project..."
 cargo build --release
 
-echo "Adding to /usr/bin/"
-sudo cp target/release/tree /usr/bin/
+echo "Adding to /usr/local/bin/"
+sudo cp target/release/tree /usr/local/bin/
 
 echo "Now you are ready to go"
 

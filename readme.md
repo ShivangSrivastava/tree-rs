@@ -29,9 +29,9 @@ This project provides a command-line tool to print the structure of a directory 
    ```bash
    cargo build --release
    ```
-4. Add to /usr/bin
+4. Add to /usr/local/bin
     ```bash
-    sudo mv target/release/tree /usr/bin
+    sudo mv target/release/tree /usr/local/bin
     ```
     
 ### One-Step Installation
