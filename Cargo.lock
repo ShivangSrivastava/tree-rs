@@ -9,7 +9,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "739281952453521b532f476b5f8b77c4b16d5ab2a248466c8dc153b3f85d6564"
 
 [[package]]
-name = "tree"
+name = "tree-rs"
 version = "0.1.0"
 dependencies = [
  "colorized",

@@ -31,7 +31,7 @@ This project provides a command-line tool to print the structure of a directory 
    ```
 4. Add to /usr/local/bin
     ```bash
-    sudo mv target/release/tree /usr/local/bin
+    sudo mv target/release/tree-rs /usr/local/bin
     ```
     
 ### One-Step Installation
@@ -100,9 +100,9 @@ You can customize the excluded directories by modifying the `exclude` vector in 
 ## Performance Benchmarking
 Benchmarking with [hyperfine](https://github.com/sharkdp/hyperfine)
 ```bash
-hyperfine "tree" 'ls -aR --ignore="target" --ignore=".git" --ignore=".venv" --ignore="node_modules" --ignore="build" --ignore=".gradle" --ignore="__pycache__" --ignore=".cache" --ignore=".config" --ignore=".dart_tool" --ignore=".mypy_cache" --ignore=".firebase" --ignore=".idea"' --warmup=10
+hyperfine "tree-rs" 'ls -aR --ignore="target" --ignore=".git" --ignore=".venv" --ignore="node_modules" --ignore="build" --ignore=".gradle" --ignore="__pycache__" --ignore=".cache" --ignore=".config" --ignore=".dart_tool" --ignore=".mypy_cache" --ignore=".firebase" --ignore=".idea"' --warmup=10
 
-Benchmark 1: tree
+Benchmark 1: tree-rs
   Time (mean ± σ):      18.2 ms ±   1.1 ms    [User: 7.5 ms, System: 10.6 ms]
   Range (min … max):    16.0 ms …  21.0 ms    133 runs
 
@@ -112,12 +112,12 @@ Benchmark 2: ls -aR --ignore="target" --ignore=".git" --ignore=".venv" --ignore=
 
 Summary
   ls -aR --ignore="target" --ignore=".git" --ignore=".venv" --ignore="node_modules" --ignore="build" --ignore=".gradle" --ignore="__pycache__" --ignore=".cache" --ignore=".config" --ignore=".dart_tool" --ignore=".mypy_cache" --ignore=".firebase" --ignore=".idea" ran
-    1.57 ± 0.17 times faster than tree
+    1.57 ± 0.17 times faster than tree-rs
 
 ```
 ### Summary:
 
-The standard `ls -aR` ran approximately 1.57 times faster than the `tree` command. However, `tree` provides better readability and colorized output, which is a key feature.
+The standard `ls -aR` ran approximately 1.57 times faster than the `tree-rs` command. However, `tree-rs` provides better readability and colorized output, which is a key feature.
 
 ## License
 
