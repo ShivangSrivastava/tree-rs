@@ -97,6 +97,28 @@ You can customize the excluded directories by modifying the `exclude` vector in 
 
 - [colorized](https://crates.io/crates/colorized) (for colorized output)
 
+## Performance Benchmarking
+Benchmarking with [hyperfine](https://github.com/sharkdp/hyperfine)
+```bash
+hyperfine "tree" 'ls -aR --ignore="target" --ignore=".git" --ignore=".venv" --ignore="node_modules" --ignore="build" --ignore=".gradle" --ignore="__pycache__" --ignore=".cache" --ignore=".config" --ignore=".dart_tool" --ignore=".mypy_cache" --ignore=".firebase" --ignore=".idea"' --warmup=10
+
+Benchmark 1: tree
+  Time (mean ± σ):      18.2 ms ±   1.1 ms    [User: 7.5 ms, System: 10.6 ms]
+  Range (min … max):    16.0 ms …  21.0 ms    133 runs
+
+Benchmark 2: ls -aR --ignore="target" --ignore=".git" --ignore=".venv" --ignore="node_modules" --ignore="build" --ignore=".gradle" --ignore="__pycache__" --ignore=".cache" --ignore=".config" --ignore=".dart_tool" --ignore=".mypy_cache" --ignore=".firebase" --ignore=".idea"
+  Time (mean ± σ):      11.6 ms ±   1.0 ms    [User: 8.4 ms, System: 3.2 ms]
+  Range (min … max):     9.9 ms …  15.3 ms    200 runs
+
+Summary
+  ls -aR --ignore="target" --ignore=".git" --ignore=".venv" --ignore="node_modules" --ignore="build" --ignore=".gradle" --ignore="__pycache__" --ignore=".cache" --ignore=".config" --ignore=".dart_tool" --ignore=".mypy_cache" --ignore=".firebase" --ignore=".idea" ran
+    1.57 ± 0.17 times faster than tree
+
+```
+### Summary:
+
+The standard ls -aR ran approximately 1.57 times faster than the tree command. However, tree provides better readability and colorized output, which is a key feature.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
