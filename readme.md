@@ -117,7 +117,7 @@ Summary
 ```
 ### Summary:
 
-The standard ls -aR ran approximately 1.57 times faster than the tree command. However, tree provides better readability and colorized output, which is a key feature.
+The standard `ls -aR` ran approximately 1.57 times faster than the `tree` command. However, `tree` provides better readability and colorized output, which is a key feature.
 
 ## License
 
