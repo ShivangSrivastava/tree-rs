@@ -76,10 +76,18 @@ fn print_tree(path: &Path, prefix: &str, exclude: &Vec<Cow<'_, str>>) {
 /// The entry point of the program that prints the directory tree of the current working directory.
 fn main() {
     let path = Path::new(".");
-    let exclude: Vec<Cow<'_, str>> = vec!["target", ".git", ".venv", "node_modules", "build"]
-        .into_iter()
-        .map(|e| Cow::from(e))
-        .collect();
+    let exclude: Vec<Cow<'_, str>> = vec![
+        "target",
+        ".git",
+        ".venv",
+        "node_modules",
+        "build",
+        ".gradle",
+        "__pycache__",
+    ]
+    .into_iter()
+    .map(|e| Cow::from(e))
+    .collect();
     let cwd = env::current_dir().expect("Failed to get current directory");
     if let Some(project_name) = cwd.file_name() {
         println!("{}", project_name.to_string_lossy());
