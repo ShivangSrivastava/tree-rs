@@ -1,4 +1,11 @@
-use std::{borrow::Cow, env, fs, path::Path, process::exit};
+use std::{
+    borrow::Cow,
+    collections::HashSet,
+    env,
+    fs::{self},
+    path::Path,
+    process::exit,
+};
 
 use colorized::{Color, Colors};
 
@@ -31,7 +38,7 @@ fn sort_entities(path: &Path) -> Vec<fs::DirEntry> {
 /// - `path`: A reference to a `Path` representing the directory to be printed.
 /// - `prefix`: A string used for formatting the tree structure (for indentation).
 /// - `exclude`: A reference to a vector of `Cow<'_, str>` containing the names of directories to exclude from the tree traversal.
-fn print_tree(path: &Path, prefix: &str, exclude: &Vec<Cow<'_, str>>) {
+fn print_tree(path: &Path, prefix: &str, exclude: &HashSet<Cow<'_, str>>) {
     let entries = sort_entities(path);
 
     let total_entries = entries.len();
@@ -76,7 +83,7 @@ fn print_tree(path: &Path, prefix: &str, exclude: &Vec<Cow<'_, str>>) {
 /// The entry point of the program that prints the directory tree of the current working directory.
 fn main() {
     let path = Path::new(".");
-    let exclude: Vec<Cow<'_, str>> = vec![
+    let exclude: HashSet<Cow<'_, str>> = vec![
         "target",
         ".git",
         ".venv",
@@ -84,6 +91,12 @@ fn main() {
         "build",
         ".gradle",
         "__pycache__",
+        ".cache",
+        ".config",
+        ".dart_tool",
+        ".mypy_cache",
+        ".firebase",
+        ".idea",
     ]
     .into_iter()
     .map(|e| Cow::from(e))
