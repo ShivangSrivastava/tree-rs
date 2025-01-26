@@ -11,7 +11,7 @@ This project provides a command-line tool to print the structure of a directory 
 
 ## Prerequisites
 
-- Rust (version 1.50 or later)
+- [Rust](https://www.rust-lang.org/tools/install) (version 1.50 or later)
 
 ## Installation
 
@@ -71,15 +71,31 @@ my_project
 You can customize the excluded directories by modifying the `exclude` vector in the `main()` function of the code.
 
 ```rust
-let exclude: Vec<Cow<'_, str>> = vec!["target", ".git", ".venv", "node_modules", "build"]
+
+    let exclude: HashSet<Cow<'_, str>> = vec![
+        "target",
+        ".git",
+        ".venv",
+        "node_modules",
+        "build",
+        ".gradle",
+        "__pycache__",
+        ".cache",
+        ".config",
+        ".dart_tool",
+        ".mypy_cache",
+        ".firebase",
+        ".idea",
+    ]
     .into_iter()
     .map(|e| Cow::from(e))
     .collect();
+
 ```
 
 ## Dependencies
 
-- `colorized` (for colorized output)
+- [colorized](https://crates.io/crates/colorized) (for colorized output)
 
 ## License
 
