@@ -66,6 +66,10 @@ my_project
 └── README.md
 ```
 
+### Screenshot
+Here’s a screenshot of how the directory tree will look:
+![Directory Tree Screenshot](screenshots/image.png)
+
 ### Excluding Custom Directories:
 
 You can customize the excluded directories by modifying the `exclude` vector in the `main()` function of the code.
