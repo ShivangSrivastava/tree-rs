@@ -11,7 +11,7 @@ use crate::sorting::sort_entities;
 /// - `prefix`: A string used for formatting the tree structure (for indentation).
 /// - `exclude`: A reference to a vector of `Cow<'_, str>` containing the names of directories to exclude from the tree traversal.
 pub fn print_tree(path: &Path, prefix: &str, exclude: &HashSet<Cow<'_, str>>) {
-    let entries = sort_entities(path);
+    let entries = sort_entities(path).unwrap();
 
     let total_entries = entries.len();
 

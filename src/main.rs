@@ -1,7 +1,5 @@
 use std::{borrow::Cow, collections::HashSet, env, path::Path, process::exit};
 
-use display::print_tree;
-
 mod display;
 
 mod sorting;
@@ -34,5 +32,5 @@ fn main() {
         println!("No folder name found");
         exit(1);
     }
-    print_tree(path, "", &exclude);
+    display::print_tree(path, "", &exclude);
 }
